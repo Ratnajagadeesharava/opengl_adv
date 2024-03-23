@@ -1,4 +1,6 @@
 #include "render.h"
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
 
 
 
@@ -41,17 +43,11 @@ void render::createQuad(float vertices[],
 	unsigned int *ibo,int vertices_size,int indices_size)
 {
 	
-	glGenBuffers(1, bufferId);
-    glBindBuffer(GL_ARRAY_BUFFER, *bufferId);
-
-    glBufferData(GL_ARRAY_BUFFER, vertices_size, vertices, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
+	VertexBuffer vb(vertices, vertices_size);
+    
 
 
-    glGenBuffers(1, ibo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *ibo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_size, indices, GL_STATIC_DRAW);
+    IndexBuffer ib(indices, indices_size);
 
 }
 
