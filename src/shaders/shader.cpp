@@ -10,7 +10,7 @@ static std::string readShaderFile(const std::string path) {
     std::stringstream stream;
 
     if (!myFile.is_open()) {
-        std::cout << "file is not open";
+        std::cout<< path << "file cannot be opened"<<std::endl;
     }
     while (std::getline(myFile, line)) {
         stream << line << std::endl;
