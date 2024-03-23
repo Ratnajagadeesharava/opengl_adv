@@ -1,8 +1,5 @@
 #pragma once
-#include<string>
-#include<fstream>
-#include<iostream>
-#include<sstream>
+#include "../Utils.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
