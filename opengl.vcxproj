@@ -133,8 +133,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\shaders\ShaderProgram.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
-    <ClCompile Include="src\render.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\shaders\shader.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
@@ -147,9 +148,10 @@
     <None Include="src\random.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\shaders\ShaderProgram.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\defs.h" />
-    <ClInclude Include="src\render.h" />
+    <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\shaders\shader.h" />
     <ClInclude Include="src\imgui\imconfig.h" />
     <ClInclude Include="src\imgui\imgui.h" />

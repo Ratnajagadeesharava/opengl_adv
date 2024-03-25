@@ -1,7 +1,30 @@
 #include "shader.h"
 #define SOLUTION_DIR std::string(__FILE__).substr(0, std::string(__FILE__).find_last_of("\\/"))
 
-static std::string readShaderFile(const std::string path) {
+
+
+
+shader::shader(const std::string& filePath, GLuint shaderType)
+{
+    std::string shader_code =  readShaderFile(filePath);
+    m_RendererID = compileShader(shaderType, shader_code);
+    m_shaderType = shaderType;
+}
+
+
+
+shader::~shader()
+{
+	deleteShader();
+}
+
+void shader::deleteShader() const
+{
+	glDeleteShader(m_RendererID);
+}
+
+std::string shader::readShaderFile(const std::string& path)
+{
     std::fstream myFile;
 
     std::string completepath = SOLUTION_DIR + "\\" + path;
@@ -10,17 +33,18 @@ static std::string readShaderFile(const std::string path) {
     std::stringstream stream;
 
     if (!myFile.is_open()) {
-        std::cout<< path << "file cannot be opened"<<std::endl;
+        std::cout << path << "file cannot be opened" << std::endl;
     }
     while (std::getline(myFile, line)) {
         stream << line << std::endl;
     }
     myFile.close();
     return stream.str();
+    
 }
 
-
-static unsigned int compileShader(unsigned int type, std::string source) {
+unsigned int shader::compileShader(unsigned int type, const std::string source)
+{
     //Create a shader in the GPU  And get an id for it
     unsigned int shaderId = glCreateShader(type);
     //Write shader in string and add it as source
@@ -43,17 +67,4 @@ static unsigned int compileShader(unsigned int type, std::string source) {
     }
     std::cout << "shader compiled Succesfully" << std::endl;
     return shaderId;
-}
-static unsigned int createShader(std::string vertexShader,
-    std::string fragmentShader) {
-    unsigned int vs = compileShader(GL_VERTEX_SHADER, vertexShader);
-    unsigned int fs = compileShader(GL_FRAGMENT_SHADER, fragmentShader);
-    unsigned int program = glCreateProgram();
-    glAttachShader(program, vs);
-    glAttachShader(program, fs);
-    glLinkProgram(program);
-    glValidateProgram(program);
-    glDeleteShader(vs);
-    glDeleteShader(fs);
-    return program;
 }

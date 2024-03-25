@@ -1,14 +1,14 @@
-#include "render.h"
+#include "Renderer.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 
 
 
-render::render(int w,int h):width(w),height(h)
+Renderer::Renderer(int w,int h):width(w),height(h)
 {
 }
 
-bool render::render_init()
+bool Renderer::renderer_init()
 {
 	if (!glfwInit())
 	{
@@ -37,27 +37,22 @@ bool render::render_init()
 	return true;
 }
 
-void render::createQuad(float vertices[],
+void Renderer::createQuad(float vertices[],
 	unsigned int indices[],
 	unsigned int *bufferId,
 	unsigned int *ibo,int vertices_size,int indices_size)
 {
 	
 	VertexBuffer vb(vertices, vertices_size);
-    
-
-
     IndexBuffer ib(indices, indices_size);
+	*bufferId = vb.GetID();
 
 }
 
-void render::render_begin()
+void Renderer::clearScreen(float red, float green, float blue, float alpha)
 {
+	glClearColor(red, green, blue, alpha);
 	
-}
-
-void render::render_end()
-{
 }
 
 
