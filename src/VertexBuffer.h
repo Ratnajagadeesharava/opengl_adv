@@ -8,9 +8,9 @@ class VertexBuffer
 
 	void Bind() const;
 	void Unbind() const;
-
+	static void BindById(GLuint id);
 	GLuint GetID() const { return m_RendererID; }
-
+private:
 	GLuint m_RendererID;
 };
 

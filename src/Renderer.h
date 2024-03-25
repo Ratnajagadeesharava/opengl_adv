@@ -1,14 +1,16 @@
 #pragma once
 #include "defs.h"
-class render
+class Renderer
 {
 	public:
-		render(int w,int h);
-		 bool render_init();
+		Renderer(int w,int h);
+		 bool renderer_init();
 		 void createQuad(float vertices[],unsigned int indices[], unsigned int* bufferId, unsigned int* ibo,int vertices_size,int indices_size);
 
-		 void render_begin();
-		 void render_end();
+		 void clearScreen(float red,float green,float blue,float alpha);
+
+		 void renderer_begin();
+		 void renderer_end();
 
 		 GLFWwindow* window;
 private :
