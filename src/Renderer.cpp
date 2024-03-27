@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
+#include "shaders/ShaderProgram.h"
 
 
 
@@ -53,6 +54,12 @@ void Renderer::clearScreen(float red, float green, float blue, float alpha)
 {
 	glClearColor(red, green, blue, alpha);
 	
+}
+
+void Renderer::Draw()
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
 

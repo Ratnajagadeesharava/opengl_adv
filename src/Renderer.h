@@ -9,8 +9,7 @@ class Renderer
 
 		 void clearScreen(float red,float green,float blue,float alpha);
 
-		 void renderer_begin();
-		 void renderer_end();
+		 void Draw( );
 
 		 GLFWwindow* window;
 private :
